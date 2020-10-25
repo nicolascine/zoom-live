@@ -1,9 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { match } from 'react-router-dom';
 
-export const SingleSession: React.FC<{}> = () => {
+interface Identifiable {
+  id: string;
+}
+
+export const SingleSession = (mathedRoute: match<Identifiable> | any) => {
+  const getIframe = function (paramID: string) {
+    return (
+      <div
+        dangerouslySetInnerHTML={{
+          __html: `<iframe height="500" style="width: 100%;" scrolling="no" src="https://via.live/zoom_player/${paramID}" frameborder="no" allowtransparency="true" allowfullscreen="true"></iframe>`,
+        }}
+      />
+    );
+  };
+
+  const paramID = mathedRoute.match.params.id;
+  const [sessionID, setSessionID] = useState('');
+
+  useEffect(() => {
+    if (paramID) {
+      setSessionID(paramID);
+    }
+  }, [paramID]);
+
   return (
-    <aside>
-      <h2>SingleSession page</h2>
-    </aside>
+    <section>{sessionID ? <>{getIframe(paramID)}</> : 'load error'}</section>
   );
 };

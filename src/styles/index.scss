@@ -1,4 +1,9 @@
 @import '~bootstrap/scss/bootstrap.scss';
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100,600&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
 
 .bd-placeholder-img {
   font-size: 1.125rem;
@@ -7,6 +12,11 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+//item
+.card-text {
+  font-weight: 600;
 }
 
 @media (min-width: 768px) {

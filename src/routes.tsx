@@ -6,7 +6,7 @@ const Routes: React.FC = () => (
   <>
     <Switch>
       <Route exact path="/" component={Home} />
-      <Route path="/session" component={SingleSession} />
+      <Route path="/session/:id" component={SingleSession} />
       <Route component={() => <div>Not Found</div>} />
     </Switch>
   </>
