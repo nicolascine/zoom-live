@@ -6,6 +6,9 @@ interface Identifiable {
 }
 
 export const SingleSession = (mathedRoute: match<Identifiable> | any) => {
+  const paramID = mathedRoute.match.params.id;
+  const [sessionID, setSessionID] = useState('');
+
   const getIframe = function (paramID: string) {
     return (
       <div
@@ -15,9 +18,6 @@ export const SingleSession = (mathedRoute: match<Identifiable> | any) => {
       />
     );
   };
-
-  const paramID = mathedRoute.match.params.id;
-  const [sessionID, setSessionID] = useState('');
 
   useEffect(() => {
     if (paramID) {

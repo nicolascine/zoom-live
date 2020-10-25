@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { ApplicationState } from '../../../store';
 import { Sessions } from '../../../store/sessions/types';
 import { fetchRequest } from '../../../store/sessions/actions';
-import Item from './item';
+import Item from './Item';
 
 interface PropsFromState {
   loading: boolean;
