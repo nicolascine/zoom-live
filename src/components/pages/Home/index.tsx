@@ -45,8 +45,26 @@ class HomePage extends React.Component<AllProps> {
 
     return (
       <>
-        {loading && <p>Loading ....</p>}
-        {this.renderData()}
+        <section className="jumbotron text-center">
+          <div className="container">
+            <h1>VIA.LIVE</h1>
+            <p className="lead text-muted">
+              We are the world’s #1 INTERACTIVE LIVE platform for Zoom events.
+              Watch and Join thousands of FREE Zoom music concerts, fitness
+              classes, parties, and other events LIVE. MEET & TALK to millions
+              of other fans all around the world
+            </p>
+          </div>
+        </section>
+
+        <div className="album py-5 bg-light">
+          <div className="container">
+            <div className="row">
+              {' '}
+              {loading && <p>Loading ....</p>} {this.renderData()}
+            </div>
+          </div>
+        </div>
       </>
     );
   }
