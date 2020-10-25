@@ -19,7 +19,7 @@ const Item: React.FC<Session> = (props) => {
           ></div>
         </Link>
         <div className="card-body">
-          <p className="card-text">{props.description}</p>
+          <p className="card-text">{props.name}</p>
           <div className="d-flex justify-content-between align-items-center">
             <div className="btn-group">
               <button
