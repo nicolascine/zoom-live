@@ -4,6 +4,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { createBrowserHistory } from 'history';
 import configureStore from './configureStore';
+import './styles/index.scss';
 
 const history = createBrowserHistory();
 
