@@ -1,15 +1,79 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../store/modules/combineReducers';
+import * as React from 'react';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-export const Home: React.FC<{}> = () => {
-  const data = useSelector((state: RootState) => state.todo.data);
+import styled from 'styled-components';
 
-  console.log(data);
+import { ApplicationState } from '../../store';
+import { Sessions } from '../../store/sessions/types';
+import { fetchRequest } from '../../store/sessions/actions';
 
-  return (
-    <aside>
-      <h2>HomePage</h2>
-    </aside>
-  );
+interface PropsFromState {
+  loading: boolean;
+  data: Sessions;
+  errors?: string;
+}
+
+interface PropsFromDispatch {
+  fetchRequest: typeof fetchRequest;
+}
+
+type AllProps = PropsFromState & PropsFromDispatch;
+
+class HomePage extends React.Component<AllProps> {
+  public componentDidMount() {
+    const { fetchRequest: fr } = this.props;
+    fr();
+  }
+
+  private renderData() {
+    const { loading, data } = this.props;
+
+    return (
+      <>
+        {loading && data.sessions && data.sessions.length === 0 && (
+          <td colSpan={3}>Loading...</td>
+        )}
+        {data.sessions &&
+          data.sessions.length &&
+          data.sessions.map((session: any, index: number) => (
+            <div key={index}>
+              <pre>{JSON.stringify(session)}</pre>
+              <img
+                width="auto"
+                height="100"
+                src={session.profile_img_url}
+                alt=""
+              />
+            </div>
+          ))}
+      </>
+    );
+  }
+
+  public render() {
+    const { loading } = this.props;
+
+    return (
+      <>
+        {loading && <p>Loading ....</p>}
+        <p>
+          <small>test data here~</small>
+        </p>
+        {this.renderData()}
+      </>
+    );
+  }
+}
+
+const mapStateToProps = ({ sessions }: ApplicationState) => ({
+  loading: sessions.loading,
+  errors: sessions.errors,
+  data: sessions.data,
+});
+
+const mapDispatchToProps = {
+  fetchRequest,
 };
+
+export const Home = connect(mapStateToProps, mapDispatchToProps)(HomePage);

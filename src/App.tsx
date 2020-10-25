@@ -1,23 +1,27 @@
-import React, { ReactElement } from 'react';
+import * as React from 'react';
 import { Provider } from 'react-redux';
+import { ConnectedRouter } from 'connected-react-router';
+import { Store } from 'redux';
+import { History } from 'history';
 import { Layout } from './components/layout';
-import { Home, SingleSession } from './components/pages';
-import store from './store';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Routes from './routes';
+import { ApplicationState } from './store';
 
-import './App.css';
+interface AppProps {
+  store: Store<ApplicationState>;
+  history: History;
+}
 
-function App(): ReactElement {
+const App: React.FC<AppProps> = ({ store, history }) => {
   return (
     <Provider store={store}>
-      <Router>
+      <ConnectedRouter history={history}>
         <Layout>
-          <Route path="/" exact component={Home} />
-          <Route path="/session/:id" component={SingleSession} />
+          <Routes />
         </Layout>
-      </Router>
+      </ConnectedRouter>
     </Provider>
   );
-}
+};
 
 export default App;
