@@ -1,7 +1,5 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import styled from 'styled-components';
 import { ApplicationState } from '../../../store';
 import { Sessions } from '../../../store/sessions/types';
 import { fetchRequest } from '../../../store/sessions/actions';
@@ -37,15 +35,6 @@ class HomePage extends React.Component<AllProps> {
           data.sessions.length &&
           data.sessions.map((session: any, index: number) => (
             <Item {...session} key={index} />
-            // <div key={index}>
-            //   <pre>{JSON.stringify(session)}</pre>
-            //   <img
-            //     width="auto"
-            //     height="100"
-            //     src={session.profile_img_url}
-            //     alt=""
-            //   />
-            // </div>
           ))}
       </>
     );
@@ -57,9 +46,6 @@ class HomePage extends React.Component<AllProps> {
     return (
       <>
         {loading && <p>Loading ....</p>}
-        {/* <p>
-          <small>test data here~</small>
-        </p> */}
         {this.renderData()}
       </>
     );

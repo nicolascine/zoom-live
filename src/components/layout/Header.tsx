@@ -4,8 +4,6 @@ import { Link } from 'react-router-dom';
 export const Header: React.FC<{}> = () => {
   return (
     <header>
-      {/* <Link to="/">Home</Link>
-<Link to="/session/1">Session test</Link> */}
       <div className="collapse bg-dark" id="navbarHeader">
         <div className="container">
           <div className="row">
