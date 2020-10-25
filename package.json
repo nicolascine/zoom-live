@@ -1,7 +1,7 @@
 {
-  "name": "front",
   "homepage": "http://nicolascine.github.io/zoom-live",
-  "version": "0.1.0",
+  "name": "front",
+  "version": "0.0.1",
   "private": true,
   "dependencies": {
     "@emotion/core": "^10.0.35",
