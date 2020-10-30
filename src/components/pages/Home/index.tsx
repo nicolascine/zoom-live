@@ -1,39 +1,48 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { ApplicationState } from '../../../store';
-import { Sessions } from '../../../store/sessions/types';
-import { fetchRequest } from '../../../store/sessions/actions';
+import { Session } from '../../../store/sessions/types';
+import {
+  fetchRequest,
+  sortBy,
+  filterBy,
+} from '../../../store/sessions/actions';
 import Item from './Item';
+import OperationsBar from './OperationsBar';
 
 interface PropsFromState {
   loading: boolean;
-  data: Sessions;
+  data: Session[];
   errors?: string;
 }
 
 interface PropsFromDispatch {
   fetchRequest: typeof fetchRequest;
+  sortBy: typeof sortBy;
+  filterBy: typeof filterBy;
 }
 
-type AllProps = PropsFromState & PropsFromDispatch;
-
-class HomePage extends React.Component<AllProps> {
+class HomePage extends React.Component<PropsFromState & PropsFromDispatch> {
   public componentDidMount() {
     const { fetchRequest: fr } = this.props;
     fr();
   }
+
+  private handleSortBy = (key: string, direction: string) => {
+    this.props.sortBy(key, direction);
+  };
 
   private renderData() {
     const { loading, data } = this.props;
 
     return (
       <>
-        {loading && data.sessions && data.sessions.length === 0 && (
+        {loading && data && data.length === 0 && (
           <td colSpan={3}>Loading...</td>
         )}
-        {data.sessions &&
-          data.sessions.length &&
-          data.sessions.map((session: any, index: number) => (
+        {data &&
+          data.length &&
+          data.map((session: any, index: number) => (
             <Item {...session} key={index} />
           ))}
       </>
@@ -56,11 +65,10 @@ class HomePage extends React.Component<AllProps> {
             </p>
           </div>
         </section>
-
+        <OperationsBar handleSortBy={this.handleSortBy} />
         <div className="album py-5 bg-light">
           <div className="container">
             <div className="row">
-              {' '}
               {loading && <p>Loading ....</p>} {this.renderData()}
             </div>
           </div>
@@ -78,6 +86,8 @@ const mapStateToProps = ({ sessions }: ApplicationState) => ({
 
 const mapDispatchToProps = {
   fetchRequest,
+  sortBy,
+  filterBy,
 };
 
 export const Home = connect(mapStateToProps, mapDispatchToProps)(HomePage);
