@@ -28,7 +28,7 @@ function* handleFetch() {
       API_ENDPOINT,
       'get_sessions_noauth',
       {
-        date: 1603483604,
+        date: Math.round(new Date().getTime() / 1000), //1603483604,
         limit: 100,
       }
     );
@@ -36,7 +36,7 @@ function* handleFetch() {
     if (res.error) {
       yield put(fetchError(res.error));
     } else {
-      yield put(fetchSuccess(res));
+      yield put(fetchSuccess(res.sessions));
     }
   } catch (err) {
     if (err instanceof Error) {

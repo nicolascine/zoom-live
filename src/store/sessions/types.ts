@@ -1,6 +1,5 @@
 // Response object for POST /get_sessions_noauth
 // https://api.via.live/get_sessions_noauth
-
 export interface User {
   id: number;
   first_name: string;
@@ -29,10 +28,6 @@ export interface Session {
   user: User;
 }
 
-export interface Sessions {
-  sessions: Session[];
-}
-
 export type ApiResponse = Record<string, any>;
 
 export enum SessionsActionTypes {
@@ -40,10 +35,12 @@ export enum SessionsActionTypes {
   FETCH_SUCCESS = '@@sessions/FETCH_SUCCESS',
   FETCH_ERROR = '@@sessions/FETCH_ERROR',
   SELECTED = '@@sessions/SELECTED',
+  SORT_BY = '@@sessions/SORT_BY',
+  FILTER_BY = '@@sessions/FILTER_BY',
 }
 
 export interface SessionsState {
   readonly loading: boolean;
-  readonly data: Sessions;
+  readonly data: Session[];
   readonly errors?: string;
 }
