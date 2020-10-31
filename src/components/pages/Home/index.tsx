@@ -4,7 +4,7 @@ import { ApplicationState } from '../../../store';
 import { Session } from '../../../store/sessions/types';
 import {
   fetchRequest,
-  sortBy,
+  sortByValue,
   filterBy,
 } from '../../../store/sessions/actions';
 import Item from './Item';
@@ -18,7 +18,7 @@ interface PropsFromState {
 
 interface PropsFromDispatch {
   fetchRequest: typeof fetchRequest;
-  sortBy: typeof sortBy;
+  sortByValue: typeof sortByValue;
   filterBy: typeof filterBy;
 }
 
@@ -28,8 +28,8 @@ class HomePage extends React.Component<PropsFromState & PropsFromDispatch> {
     fr();
   }
 
-  private handleSortBy = (key: string, direction: string) => {
-    this.props.sortBy(key, direction);
+  private handleSortByValue = (key: string, direction: string) => {
+    this.props.sortByValue(key, direction);
   };
 
   private renderData() {
@@ -65,7 +65,7 @@ class HomePage extends React.Component<PropsFromState & PropsFromDispatch> {
             </p>
           </div>
         </section>
-        <OperationsBar handleSortBy={this.handleSortBy} />
+        <OperationsBar handleSortByValue={this.handleSortByValue} />
         <div className="album py-5 bg-light">
           <div className="container">
             <div className="row">
@@ -86,7 +86,7 @@ const mapStateToProps = ({ sessions }: ApplicationState) => ({
 
 const mapDispatchToProps = {
   fetchRequest,
-  sortBy,
+  sortByValue,
   filterBy,
 };
 

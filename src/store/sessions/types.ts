@@ -35,7 +35,7 @@ export enum SessionsActionTypes {
   FETCH_SUCCESS = '@@sessions/FETCH_SUCCESS',
   FETCH_ERROR = '@@sessions/FETCH_ERROR',
   SELECTED = '@@sessions/SELECTED',
-  SORT_BY = '@@sessions/SORT_BY',
+  SORT_BY_VALUE = '@@sessions/SORT_BY_VALUE',
   FILTER_BY = '@@sessions/FILTER_BY',
 }
 

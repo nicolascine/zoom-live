@@ -1,6 +1,8 @@
 import React from 'react';
 
-const OperationsBar: React.FC<{ handleSortBy: Function }> = ({ ...props }) => {
+const OperationsBar: React.FC<{ handleSortByValue: Function }> = ({
+  ...props
+}) => {
   return (
     <nav className="navbar navbar-expand-lg">
       <div className="justify-content-md-center">
@@ -9,7 +11,7 @@ const OperationsBar: React.FC<{ handleSortBy: Function }> = ({ ...props }) => {
             <span
               className="nav-link"
               onClick={(e: React.SyntheticEvent) =>
-                props.handleSortBy('duration', 'asc')
+                props.handleSortByValue('duration', 'asc')
               }
             >
               Sort by duration ASC
@@ -19,7 +21,7 @@ const OperationsBar: React.FC<{ handleSortBy: Function }> = ({ ...props }) => {
             <span
               className="nav-link"
               onClick={(e: React.SyntheticEvent) =>
-                props.handleSortBy('duration', 'desc')
+                props.handleSortByValue('duration', 'desc')
               }
             >
               Sort by duration DESC
@@ -29,7 +31,7 @@ const OperationsBar: React.FC<{ handleSortBy: Function }> = ({ ...props }) => {
             <span
               className="nav-link"
               onClick={(e: React.SyntheticEvent) =>
-                props.handleSortBy('cost', 'asc')
+                props.handleSortByValue('cost', 'asc')
               }
             >
               Sort by cost ASC
@@ -39,7 +41,7 @@ const OperationsBar: React.FC<{ handleSortBy: Function }> = ({ ...props }) => {
             <span
               className="nav-link"
               onClick={(e: React.SyntheticEvent) =>
-                props.handleSortBy('cost', 'desc')
+                props.handleSortByValue('cost', 'desc')
               }
             >
               Sort by cost DESC

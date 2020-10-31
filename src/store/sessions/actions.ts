@@ -9,7 +9,7 @@ export const fetchSuccess = (data: Session[]) =>
 export const fetchError = (message: string) =>
   action(SessionsActionTypes.FETCH_ERROR, message);
 
-export const sortBy = (key: string, direction: string) =>
-  action(SessionsActionTypes.SORT_BY, { key, direction });
+export const sortByValue = (key: string, direction: string) =>
+  action(SessionsActionTypes.SORT_BY_VALUE, { key, direction });
 
 export const filterBy = () => action(SessionsActionTypes.FILTER_BY);
