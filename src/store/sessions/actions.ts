@@ -12,4 +12,5 @@ export const fetchError = (message: string) =>
 export const sortByValue = (key: string, direction: string) =>
   action(SessionsActionTypes.SORT_BY_VALUE, { key, direction });
 
-export const filterBy = () => action(SessionsActionTypes.FILTER_BY);
+export const filterByValue = (key: string, value: number) =>
+  action(SessionsActionTypes.FILTER_BY_VALUE, { key, value });
