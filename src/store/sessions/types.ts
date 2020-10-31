@@ -36,11 +36,12 @@ export enum SessionsActionTypes {
   FETCH_ERROR = '@@sessions/FETCH_ERROR',
   SELECTED = '@@sessions/SELECTED',
   SORT_BY_VALUE = '@@sessions/SORT_BY_VALUE',
-  FILTER_BY = '@@sessions/FILTER_BY',
+  FILTER_BY_VALUE = '@@sessions/FILTER_BY_VALUE',
 }
 
 export interface SessionsState {
   readonly loading: boolean;
   readonly data: Session[];
+  readonly dataFiltered: Session[];
   readonly errors?: string;
 }

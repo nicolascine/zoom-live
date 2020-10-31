@@ -5,7 +5,7 @@ import { Session } from '../../../store/sessions/types';
 import {
   fetchRequest,
   sortByValue,
-  filterBy,
+  filterByValue,
 } from '../../../store/sessions/actions';
 import Item from './Item';
 import OperationsBar from './OperationsBar';
@@ -13,13 +13,14 @@ import OperationsBar from './OperationsBar';
 interface PropsFromState {
   loading: boolean;
   data: Session[];
+  dataFiltered: Session[];
   errors?: string;
 }
 
 interface PropsFromDispatch {
   fetchRequest: typeof fetchRequest;
   sortByValue: typeof sortByValue;
-  filterBy: typeof filterBy;
+  filterByValue: typeof filterByValue;
 }
 
 class HomePage extends React.Component<PropsFromState & PropsFromDispatch> {
@@ -28,23 +29,34 @@ class HomePage extends React.Component<PropsFromState & PropsFromDispatch> {
     fr();
   }
 
-  private handleSortByValue = (key: string, direction: string) => {
+  private handleSortByValue = (key: string, direction: string) =>
     this.props.sortByValue(key, direction);
-  };
+
+  private handleFilterByValue = (key: string, value: number) =>
+    this.props.filterByValue(key, value);
 
   private renderData() {
-    const { loading, data } = this.props;
+    const { loading, data, dataFiltered } = this.props;
 
     return (
       <>
         {loading && data && data.length === 0 && (
           <td colSpan={3}>Loading...</td>
         )}
-        {data &&
-          data.length &&
-          data.map((session: any, index: number) => (
+
+        {dataFiltered && dataFiltered.length ? (
+          dataFiltered.map((session: any, index: number) => (
             <Item {...session} key={index} />
-          ))}
+          ))
+        ) : (
+          <>
+            {data &&
+              data.length &&
+              data.map((session: any, index: number) => (
+                <Item {...session} key={index} />
+              ))}
+          </>
+        )}
       </>
     );
   }
@@ -65,7 +77,11 @@ class HomePage extends React.Component<PropsFromState & PropsFromDispatch> {
             </p>
           </div>
         </section>
-        <OperationsBar handleSortByValue={this.handleSortByValue} />
+        <OperationsBar
+          handleSortByValue={this.handleSortByValue}
+          handleFilterByValue={this.handleFilterByValue}
+          data={this.props.data}
+        />
         <div className="album py-5 bg-light">
           <div className="container">
             <div className="row">
@@ -82,12 +98,13 @@ const mapStateToProps = ({ sessions }: ApplicationState) => ({
   loading: sessions.loading,
   errors: sessions.errors,
   data: sessions.data,
+  dataFiltered: sessions.dataFiltered,
 });
 
 const mapDispatchToProps = {
   fetchRequest,
   sortByValue,
-  filterBy,
+  filterByValue,
 };
 
 export const Home = connect(mapStateToProps, mapDispatchToProps)(HomePage);

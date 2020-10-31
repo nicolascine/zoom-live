@@ -1,9 +1,13 @@
 import { Reducer } from 'redux';
 import { SessionsState, SessionsActionTypes, Session } from './types';
-import { sortByValue } from '../../services/common/utils-serivice';
+import {
+  sortByValue,
+  filterByValue,
+} from '../../services/common/utils-serivice';
 
 const initialState: SessionsState = {
   data: [] as Session[],
+  dataFiltered: [] as Session[],
   errors: undefined,
   loading: false,
 };
@@ -35,8 +39,16 @@ const reducer: Reducer<SessionsState> = (state = initialState, action) => {
       };
     }
 
-    case SessionsActionTypes.FILTER_BY: {
-      return { ...state, loading: false, data: state.data };
+    case SessionsActionTypes.FILTER_BY_VALUE: {
+      return {
+        ...state,
+        loading: false,
+        dataFiltered: filterByValue(
+          state.data,
+          action.payload.key,
+          action.payload.value
+        ),
+      };
     }
 
     default: {
