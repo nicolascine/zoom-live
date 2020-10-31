@@ -1,6 +1,6 @@
 import { Reducer } from 'redux';
 import { SessionsState, SessionsActionTypes, Session } from './types';
-import { sortBy } from '../../services/common/utils-serivice';
+import { sortByValue } from '../../services/common/utils-serivice';
 
 const initialState: SessionsState = {
   data: [] as Session[],
@@ -23,11 +23,15 @@ const reducer: Reducer<SessionsState> = (state = initialState, action) => {
     case SessionsActionTypes.FETCH_ERROR: {
       return { ...state, loading: false, errors: action.payload };
     }
-    case SessionsActionTypes.SORT_BY: {
+    case SessionsActionTypes.SORT_BY_VALUE: {
       return {
         ...state,
         loading: false,
-        data: sortBy(state.data, action.payload.key, action.payload.direction),
+        data: sortByValue(
+          state.data,
+          action.payload.key,
+          action.payload.direction
+        ),
       };
     }
 
