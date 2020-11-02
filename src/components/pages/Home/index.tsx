@@ -8,6 +8,7 @@ import {
   filterByValue,
 } from '../../../store/sessions/actions';
 import Item from './Item';
+import Loading from '../../common/Loading';
 import OperationsBar from './OperationsBar';
 
 interface PropsFromState {
@@ -36,14 +37,10 @@ class HomePage extends React.Component<PropsFromState & PropsFromDispatch> {
     this.props.filterByValue(key, value);
 
   private renderData() {
-    const { loading, data, dataFiltered } = this.props;
+    const { data, dataFiltered } = this.props;
 
     return (
       <>
-        {loading && data && data.length === 0 && (
-          <td colSpan={3}>Loading...</td>
-        )}
-
         {dataFiltered && dataFiltered.length ? (
           dataFiltered.map((session: any, index: number) => (
             <Item {...session} key={index} />
@@ -85,7 +82,20 @@ class HomePage extends React.Component<PropsFromState & PropsFromDispatch> {
         <div className="album py-5 bg-light">
           <div className="container">
             <div className="row">
-              {loading && <p>Loading ....</p>} {this.renderData()}
+              {loading ? (
+                <div
+                  style={{
+                    display: 'flex',
+                    width: '100%',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <Loading />
+                </div>
+              ) : (
+                this.renderData()
+              )}
             </div>
           </div>
         </div>

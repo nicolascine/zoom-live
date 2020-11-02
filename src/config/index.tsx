@@ -4,10 +4,12 @@ const config = {
     GET_SESSIONS: 'get_sessions_noauth',
   },
   GET_SESSIONS_PARAMS: {
-    date: Math.round(new Date().getTime() / 1000), //Unix timestamp (current date)
+    //Unix timestamp (current date)
+    date: Math.round(new Date().getTime() / 1000),
     limit: 100,
   },
   DISPLAY_DATE_FORMAT: 'MM/DD/YYYY',
+  VIDEO_IFRAME_URL: 'via.live/zoom_player/{{paramID}}',
 };
 
 export default config;
