@@ -44,7 +44,7 @@ export const SingleSession = (mathedRoute: match<Identifiable> | any) => {
 
   return (
     <>
-      {!iframeLoaded && (
+      {iframeLoaded === false && (
         <div
           style={{
             display: 'flex',
@@ -58,7 +58,7 @@ export const SingleSession = (mathedRoute: match<Identifiable> | any) => {
         </div>
       )}
       <section style={{ opacity: Number(iframeLoaded) }}>
-        {sessionID ? <>{getIframe(paramID)}</> : 'load error'}
+        {sessionID ? <>{getIframe(paramID)}</> : 'video iframe load error'}
       </section>
     </>
   );

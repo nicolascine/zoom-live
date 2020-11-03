@@ -9,7 +9,7 @@ const config = {
     limit: 100,
   },
   DISPLAY_DATE_FORMAT: 'MM/DD/YYYY',
-  VIDEO_IFRAME_URL: 'via.live/zoom_player/{{paramID}}',
+  VIDEO_IFRAME_URL: '//via.live/zoom_player/',
 };
 
 export default config;

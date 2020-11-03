@@ -1,12 +1,36 @@
-# Getting Started with Create React App
+# Zoom live videos
+
+The project consist in simple site with a list of zoom sessions and a single page to visualize the session, there are some controls included like 'sort by duration' or 'filter by cost'.
+
+Features:
+
+- List zoom sessions
+- Display session inside in a iframeplayer
+- Filter & sort sessions
+- Load images in 'Lazy load' mode to improve the performance
+
+Live version: https://zoom-live-videos.netlify.app/
+
+### Stack
+
+- Typescript
+- React
+- Redux
+- Redux-saga
+- Bootstrap
+- Styled-components
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+### Installation requirements
+
+- Nodejs
 
 ## Available Scripts
 
 In the project directory, you can run:
 
-### `yarn start`
+### `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -14,12 +38,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
+### `npm build`
 
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
@@ -29,18 +48,42 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `yarn eject`
+### `npm test`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Directory structure
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+The idea to structure the app, bassically it's regarding to the components and pages structure, also the redux artifacts are separated by domain (session, ui, etc)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```
+├── build // transpiled files after build process
+├── netlify.toml
+├── package.json
+├── public // static assets
+├── src
+│   ├── App.tsx
+│   ├── components
+│   │   ├── common // common components
+│   │   ├── layout // layout components
+│   │   └── pages // pages componnets
+│   ├── config
+│   │   └── index.tsx // config constants values
+│   ├── routes.tsx // routes configutarion
+│   ├── services
+│   │   ├── common
+│   │   └── http
+│   ├── store // redux implementation
+│   │   ├── layout
+│   │   └── sessions
+│   │       ├── actions.ts // redux actions
+│   │       ├── reducer.ts // redux reducers
+│   │       ├── sagas.ts // sagas (async actions)
+│   └── styles // SCSS styles folder
+└── tsconfig.json
+```
 
-## Learn More
+## Architecture
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Layout
