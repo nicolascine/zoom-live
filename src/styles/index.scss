@@ -14,7 +14,6 @@ body {
   user-select: none;
 }
 
-//item
 .card-text {
   font-weight: 600;
 }
@@ -22,6 +21,101 @@ body {
 @media (min-width: 768px) {
   .bd-placeholder-img-lg {
     font-size: 3.5rem;
+  }
+}
+
+//image overlay
+
+.overlay-effect {
+  display: block;
+  float: left;
+  width: 100%;
+  position: relative;
+  background: #354174;
+  overflow: hidden;
+  img {
+    display: block;
+    position: relative;
+    min-height: 100%;
+    max-width: 100%;
+    width: 100%;
+    opacity: 0.95;
+    -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+    transition: opacity 0.35s, transform 0.35s;
+    -webkit-transform: scale3d(1.05, 1.05, 1);
+    transform: scale3d(1.05, 1.05, 1);
+  }
+  .caption {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 50px;
+    text-align: center;
+    box-sizing: border-box;
+    &:before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.5);
+      pointer-events: none;
+      content: '';
+      -webkit-transition: -webkit-transform 0.6s;
+      transition: transform 0.6s;
+      -webkit-transform: scale3d(2.2, 1.4, 1) rotate3d(0, 0, 1, 45deg)
+        translate3d(0, -100%, 0);
+      transform: scale3d(2.2, 1.4, 1) rotate3d(0, 0, 1, 45deg)
+        translate3d(0, -100%, 0);
+    }
+    h3 {
+      color: white;
+      font-family: sans-serif;
+      opacity: 0;
+      margin: 75px 0 15px 0;
+      font-size: 28px;
+    }
+    span {
+      display: block;
+      margin-top: 20px;
+      color: white;
+      font-size: 0.9em;
+      opacity: 0;
+    }
+  }
+  &.visible,
+  &:hover {
+    span,
+    a,
+    h3 {
+      animation: fadein ease-in 0.3s;
+      animation-fill-mode: forwards;
+      animation-delay: 0.2s;
+    }
+    img {
+      opacity: 0.4;
+      -webkit-transform: scale3d(1, 1, 1);
+      transform: scale3d(1, 1, 1);
+    }
+    .caption {
+      &:before {
+        -webkit-transform: scale3d(1.9, 1.4, 1) rotate3d(0, 0, 1, 45deg)
+          translate3d(0, 100%, 0);
+        transform: scale3d(1.9, 1.4, 1) rotate3d(0, 0, 1, 45deg)
+          translate3d(0, 100%, 0);
+      }
+    }
+  }
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 
