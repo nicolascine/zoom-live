@@ -63,17 +63,6 @@ class HomePage extends React.Component<PropsFromState & PropsFromDispatch> {
 
     return (
       <>
-        <section className="jumbotron text-center">
-          <div className="container">
-            <h1>VIA.LIVE</h1>
-            <p className="lead text-muted">
-              We are the world’s #1 INTERACTIVE LIVE platform for Zoom events.
-              Watch and Join thousands of FREE Zoom music concerts, fitness
-              classes, parties, and other events LIVE. MEET & TALK to millions
-              of other fans all around the world
-            </p>
-          </div>
-        </section>
         <OperationsBar
           handleSortByValue={this.handleSortByValue}
           handleFilterByValue={this.handleFilterByValue}

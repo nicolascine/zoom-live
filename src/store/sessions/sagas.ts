@@ -1,40 +1,20 @@
 import { all, call, fork, put, takeEvery } from 'redux-saga/effects';
 import { SessionsActionTypes } from './types';
 import { fetchError, fetchSuccess } from './actions';
+import SessionsAPI from '../../services/http/http-sessions-api';
 
-export async function callApi(
-  method: string,
-  url: string,
-  path: string,
-  data?: any
-) {
-  const res = await fetch(`${url}/${path}`, {
-    method,
-    headers: {
-      Accept: 'application/json',
-    },
-    body: JSON.stringify(data),
-  });
-  return res.json();
+const sessionsAPI = new SessionsAPI();
+
+export async function callApi() {
+  return await sessionsAPI.getSessions();
 }
-
-const API_ENDPOINT = 'https://api.via.live';
 
 function* handleFetch() {
   try {
-    const res = yield call(
-      callApi,
-      'post',
-      API_ENDPOINT,
-      'get_sessions_noauth',
-      {
-        date: Math.round(new Date().getTime() / 1000), //1603483604,
-        limit: 100,
-      }
-    );
+    const res = yield call(callApi);
 
-    if (res.error) {
-      yield put(fetchError(res.error));
+    if (!res.sessions) {
+      yield put(fetchError(res));
     } else {
       yield put(fetchSuccess(res.sessions));
     }

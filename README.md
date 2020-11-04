@@ -9,7 +9,10 @@ Features:
 - Filter & sort sessions
 - Load images in 'Lazy load' mode to improve the performance
 
-Live version: https://zoom-live-videos.netlify.app/
+Links:
+
+- Live version: https://zoom-live-videos.netlify.app/
+- Project summary: https://github.com/nicolascine/zoom-live/projects/1
 
 ### Stack
 

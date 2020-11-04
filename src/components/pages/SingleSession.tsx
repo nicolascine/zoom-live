@@ -15,8 +15,13 @@ export const SingleSession = (mathedRoute: match<Identifiable> | any) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIframeLoaded(true);
-    }, 2500);
+    }, 3000);
     return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    if (window.pageYOffset !== 0)
+      window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
   const getIframe = function (paramID: string) {
