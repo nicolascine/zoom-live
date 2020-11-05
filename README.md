@@ -103,3 +103,9 @@ The router is managed as a part of the state inside the store
 #### Session object
 
 ![diagram](https://raw.githubusercontent.com/nicolascine/zoom-live/main/public/state2.png)
+
+### Roadmap (Work in progress items)
+
+- [ ] UI styles improvement
+- [ ] Use Zoom SDK instead of the Video Iframe
+- [ ] Unit tests
