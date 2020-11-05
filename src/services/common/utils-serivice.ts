@@ -1,6 +1,5 @@
 import { orderBy, reduce } from 'lodash-es';
 import moment from 'moment';
-import config from '../../config';
 
 /**
  * Receive a list of values and return sorted by value
@@ -44,9 +43,25 @@ export const filterByValue = (
 };
 
 /**
- * Convert unix timestamp to date string
- * @param date: unix timestap (number)
+ * Convert Unix timestamp to date
+ * @param date: Number
+ * @param format: String
  */
-export const unixTimestampToDate = (date: number) => {
-  return moment.unix(date).format(config.DISPLAY_DATE_FORMAT);
+export const unixTimestampToDate = (date: number, format: string) => {
+  return moment.unix(date).format(format);
+};
+
+/**
+ * Truncate text using a defined max value
+ * @param text: String
+ * @param splitValue: Number
+ */
+export const truncateText = (text: string, splitValue: number) => {
+  let value: string | null = '';
+  if (text.length >= splitValue) {
+    value = `${text.slice(0, splitValue)}...`;
+  } else {
+    value = text;
+  }
+  return value;
 };

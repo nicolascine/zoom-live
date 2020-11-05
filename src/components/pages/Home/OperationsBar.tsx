@@ -66,7 +66,10 @@ const OperationsBar: React.FC<{
   }, [props.data]);
 
   return (
-    <nav className="navbar navbar-expand-lg">
+    <nav
+      className="navbar navbar-expand-lg"
+      style={{ justifyContent: 'center' }}
+    >
       <div className="justify-content-md-center">
         <ul className="navbar-nav">
           <li className="nav-item active">

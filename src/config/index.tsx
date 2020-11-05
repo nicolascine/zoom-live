@@ -10,6 +10,7 @@ const config = {
   },
   DISPLAY_DATE_FORMAT: 'MM/DD/YYYY',
   VIDEO_IFRAME_URL: '//via.live/zoom_player/',
+  MAX_LENGTH_ITEM_DESCRIPTION: 180,
 };
 
 export default config;

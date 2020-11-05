@@ -1,7 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import LazyImage from './LazyImage';
-import { unixTimestampToDate } from '../../../services/common/utils-serivice';
+import {
+  unixTimestampToDate,
+  truncateText,
+} from '../../../services/common/utils-serivice';
+import config from '../../../config';
 
 import { Session } from '../../../store/sessions/types';
 
@@ -15,9 +19,10 @@ const Item: React.FC<Session> = (props) => {
             <div className="caption">
               <span>
                 {props.description
-                  ? props.description.length > 190
-                    ? `${props.description.slice(0, 190)}...`
-                    : props.description
+                  ? truncateText(
+                      props.description,
+                      config.MAX_LENGTH_ITEM_DESCRIPTION
+                    )
                   : props.name}
               </span>
             </div>
@@ -27,7 +32,10 @@ const Item: React.FC<Session> = (props) => {
           <p className="card-text">{props.name}</p>
           <div className="d-flex justify-content-between align-items-center">
             <small className="text-muted">
-              {unixTimestampToDate(props.start_time)}
+              {unixTimestampToDate(
+                props.start_time,
+                config.DISPLAY_DATE_FORMAT
+              )}
             </small>
           </div>
         </div>

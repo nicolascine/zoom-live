@@ -119,4 +119,23 @@ body {
   }
 }
 
+// bootstrap hacks
+.btn-outline-primary:not(:disabled):not(.disabled):active,
+.btn-outline-primary:not(:disabled):not(.disabled).active,
+.show > .btn-outline-primary.dropdown-toggle,
+.btn-outline-primary:hover,
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  background: white;
+  color: #0056b3;
+}
+.nav-link,
+.btn {
+  padding: 0.2em;
+}
+
+ul.navbar-nav li {
+  padding: 0 0.3em;
+}
+
 @import './layout.scss';
