@@ -6,6 +6,7 @@ import {
   fetchRequest,
   sortByValue,
   filterByValue,
+  resetFilters,
 } from '../../../store/sessions/actions';
 import Item from './Item';
 import Loading from '../../common/Loading';
@@ -22,6 +23,7 @@ interface PropsFromDispatch {
   fetchRequest: typeof fetchRequest;
   sortByValue: typeof sortByValue;
   filterByValue: typeof filterByValue;
+  resetFilters: typeof resetFilters;
 }
 
 class HomePage extends React.Component<PropsFromState & PropsFromDispatch> {
@@ -35,6 +37,8 @@ class HomePage extends React.Component<PropsFromState & PropsFromDispatch> {
 
   private handleFilterByValue = (key: string, value: number) =>
     this.props.filterByValue(key, value);
+
+  private handleResetFilters = () => this.props.resetFilters();
 
   private renderData() {
     const { data, dataFiltered } = this.props;
@@ -66,6 +70,7 @@ class HomePage extends React.Component<PropsFromState & PropsFromDispatch> {
         <OperationsBar
           handleSortByValue={this.handleSortByValue}
           handleFilterByValue={this.handleFilterByValue}
+          handleResetFilters={this.handleResetFilters}
           data={this.props.data}
         />
         <div className="album py-5 bg-light">
@@ -104,6 +109,7 @@ const mapDispatchToProps = {
   fetchRequest,
   sortByValue,
   filterByValue,
+  resetFilters,
 };
 
 export const Home = connect(mapStateToProps, mapDispatchToProps)(HomePage);

@@ -5,6 +5,7 @@ import { Session } from '../../../store/sessions/types';
 const OperationsBar: React.FC<{
   handleSortByValue: Function;
   handleFilterByValue: Function;
+  handleResetFilters: Function;
   data: Session[];
 }> = ({ ...props }) => {
   const [sortByDuration, setSortByDuration]: [
@@ -73,9 +74,7 @@ const OperationsBar: React.FC<{
       <div className="justify-content-md-center">
         <ul className="navbar-nav">
           <li className="nav-item active">
-            <button
-              type="button"
-              className="btn btn-outline-primary"
+            <span
               onClick={(e: React.SyntheticEvent) => {
                 const sort =
                   sortByDuration === null || sortByDuration === 'asc'
@@ -120,12 +119,10 @@ const OperationsBar: React.FC<{
                   )}
                 </>
               )}
-            </button>
+            </span>
           </li>
           <li className="nav-item active">
-            <button
-              type="button"
-              className="btn btn-outline-primary"
+            <span
               onClick={(e: React.SyntheticEvent) => {
                 const sort =
                   sortByCost === null || sortByCost === 'asc' ? 'desc' : 'asc';
@@ -168,7 +165,7 @@ const OperationsBar: React.FC<{
                   )}
                 </>
               )}
-            </button>
+            </span>
           </li>
           <li>
             <Nav
@@ -177,7 +174,6 @@ const OperationsBar: React.FC<{
               onSelect={handleFilterByDuration}
             >
               <NavDropdown
-                className="btn btn-outline-primary btn-sm"
                 title={`Filter by duration ${
                   filterByDuration !== null ? filterByDuration : ''
                 }`}
@@ -196,7 +192,6 @@ const OperationsBar: React.FC<{
           <li>
             <Nav variant="pills" activeKey="1" onSelect={handleFilterByCost}>
               <NavDropdown
-                className="btn btn-outline-primary btn-sm"
                 title={`Filter by cost ${
                   filterByCost !== null ? filterByCost : ''
                 }`}
@@ -210,6 +205,13 @@ const OperationsBar: React.FC<{
                   ))}
               </NavDropdown>
             </Nav>
+          </li>
+          <li>
+            <span
+              onClick={(e: React.SyntheticEvent) => props.handleResetFilters()}
+            >
+              reset filters
+            </span>
           </li>
         </ul>
       </div>

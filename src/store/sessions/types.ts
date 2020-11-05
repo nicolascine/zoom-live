@@ -34,9 +34,9 @@ export enum SessionsActionTypes {
   FETCH_REQUEST = '@@sessions/FETCH_REQUEST',
   FETCH_SUCCESS = '@@sessions/FETCH_SUCCESS',
   FETCH_ERROR = '@@sessions/FETCH_ERROR',
-  SELECTED = '@@sessions/SELECTED',
   SORT_BY_VALUE = '@@sessions/SORT_BY_VALUE',
   FILTER_BY_VALUE = '@@sessions/FILTER_BY_VALUE',
+  RESET_FILTERS = '@@sessions/RESET_FILTERS',
 }
 
 export interface SessionsState {

@@ -134,8 +134,44 @@ body {
   padding: 0.2em;
 }
 
-ul.navbar-nav li {
-  padding: 0 0.3em;
+ul.navbar-nav {
+  @media (max-width: 768px) {
+    display: block;
+    text-align: center;
+  }
+  li {
+    padding: 5px 0.5em 0 0.5em;
+    cursor: pointer;
+    border-right: 1px solid #d6d0d0;
+    &:last-child {
+      border: none;
+    }
+    @media (max-width: 768px) {
+      display: inline-block;
+      border: none;
+      width: auto;
+      text-align: center;
+    }
+  }
+  span,
+  a {
+    color: #222;
+  }
+}
+
+.justify-content-md-center {
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+}
+
+.btn-outline-primary:not(:disabled):not(.disabled):active,
+.btn-outline-primary:not(:disabled):not(.disabled).active,
+.show > .btn-outline-primary.dropdown-toggle,
+.btn-outline-primary:hover,
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  color: #222;
 }
 
 @import './layout.scss';

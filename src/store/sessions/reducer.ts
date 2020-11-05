@@ -31,14 +31,13 @@ const reducer: Reducer<SessionsState> = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        data: sortByValue(
+        dataFiltered: sortByValue(
           state.data,
           action.payload.key,
           action.payload.direction
         ),
       };
     }
-
     case SessionsActionTypes.FILTER_BY_VALUE: {
       return {
         ...state,
@@ -48,6 +47,14 @@ const reducer: Reducer<SessionsState> = (state = initialState, action) => {
           action.payload.key,
           action.payload.value
         ),
+      };
+    }
+
+    case SessionsActionTypes.RESET_FILTERS: {
+      return {
+        ...state,
+        loading: false,
+        dataFiltered: [],
       };
     }
 

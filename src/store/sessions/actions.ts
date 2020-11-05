@@ -14,3 +14,5 @@ export const sortByValue = (key: string, direction: string) =>
 
 export const filterByValue = (key: string, value: number) =>
   action(SessionsActionTypes.FILTER_BY_VALUE, { key, value });
+
+export const resetFilters = () => action(SessionsActionTypes.RESET_FILTERS);
