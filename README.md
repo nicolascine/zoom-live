@@ -1,6 +1,6 @@
 # Zoom live videos
 
-The project consist in simple site with a list of zoom sessions and a single page to visualize the session, there are some controls included like 'sort by duration' or 'filter by cost'.
+The project consists of a simple site with a list of zoom sessions and a single page to view the session, there are some controls included like 'sort by duration' or 'filter by cost'.
 
 Features:
 
