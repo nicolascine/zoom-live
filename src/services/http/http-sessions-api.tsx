@@ -1,6 +1,6 @@
 import CONFIG from '../../config';
 import HttpClient from './http-client';
-import { Session } from './types';
+import { Session } from '../../store/sessions/types';
 
 class SessionsAPI extends HttpClient {
   public constructor() {
