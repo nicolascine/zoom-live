@@ -106,6 +106,6 @@ The router is managed as a part of the state inside the store
 
 ### Roadmap (Work in progress items)
 
-- [ ] UI styles improvement
+- [ ] UI complex styles & design proposal
 - [ ] Use Zoom SDK instead of the Video Iframe
 - [ ] Unit tests
