@@ -58,7 +58,7 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 
 ## Directory structure
 
-The idea to structure the app, bassically it's regarding to the components and pages structure, also the redux artifacts are separated by domain (session, ui, etc)
+The idea of this structure, bassically is to organize the folders by pages and components (and children components if applies), also the redux artifacts are separated by domain (session, ui, etc).
 
 ```
 ├── build // transpiled files after build process
