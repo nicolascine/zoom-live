@@ -89,4 +89,17 @@ The idea to structure the app, bassically it's regarding to the components and p
 
 ## Architecture
 
-## Layout
+Basically the architecture consists of a redux model, using asynchronous actions through redux-saga
+
+![diagram](https://raw.githubusercontent.com/nicolascine/zoom-live/main/public/diagram.jpg)
+
+The store is divied into 'Layout' (work in progress) to manage the UI aspects, and 'Sessions', to manage the state of the session list and the filters.
+
+#### State object
+
+![diagram](https://raw.githubusercontent.com/nicolascine/zoom-live/main/public/state1.png)
+The router is managed as a part of the state inside the store
+
+#### Session object
+
+![diagram](https://raw.githubusercontent.com/nicolascine/zoom-live/main/public/state2.png)
