@@ -64,6 +64,7 @@ const FilterByValueButton: React.FC<{
                 eventKey={item.toString()}
               >
                 {item}
+                {keyName === 'duration' ? ' minutes' : ''}
               </NavDropdown.Item>
             ))}
         </NavDropdown>
