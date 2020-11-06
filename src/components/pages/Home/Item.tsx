@@ -15,9 +15,16 @@ const Item: React.FC<Session> = (props) => {
       <div className="card mb-4 shadow-sm">
         <Link to={`/session/${props.id}`}>
           <div className="overlay-effect">
-            {props.profile_img_url && (
-              <LazyImage src={props.profile_img_url} alt={props.name} />
-            )}
+            {
+              <LazyImage
+                src={
+                  props.profile_img_url
+                    ? props.profile_img_url
+                    : config.NO_IMAGE_PLACEHOLDER(props.name)
+                }
+                alt={props.name}
+              />
+            }
             <div className="caption">
               <span>
                 {props.description
