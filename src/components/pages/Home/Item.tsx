@@ -15,7 +15,9 @@ const Item: React.FC<Session> = (props) => {
       <div className="card mb-4 shadow-sm">
         <Link to={`/session/${props.id}`}>
           <div className="overlay-effect">
-            <LazyImage src={props.profile_img_url} alt={props.name} />
+            {props.profile_img_url && (
+              <LazyImage src={props.profile_img_url} alt={props.name} />
+            )}
             <div className="caption">
               <span>
                 {props.description
