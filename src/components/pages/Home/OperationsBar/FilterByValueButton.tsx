@@ -7,7 +7,16 @@ const FilterByValueButton: React.FC<{
   keyName: string;
   onSelect: Function;
   data: Session[];
-}> = ({ title, keyName, onSelect, data }) => {
+  filterName: string;
+  currentSelectedFilter: string | null;
+}> = ({
+  title,
+  keyName,
+  onSelect,
+  data,
+  filterName,
+  currentSelectedFilter,
+}) => {
   const [filterByValue, setFilterByValue]: [
     filterByValue: null | string,
     setFilterByValue: Function
@@ -21,6 +30,10 @@ const FilterByValueButton: React.FC<{
   useEffect(() => {
     if (filterByValue) onSelect(filterByValue);
   }, [filterByValue]);
+
+  useEffect(() => {
+    if (filterName !== currentSelectedFilter) setFilterByValue(null);
+  }, [currentSelectedFilter]);
 
   useEffect(() => {
     if (data && data.length) {

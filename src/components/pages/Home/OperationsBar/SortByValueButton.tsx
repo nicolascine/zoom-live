@@ -3,7 +3,9 @@ import React, { useState, useEffect } from 'react';
 const SortByValueButton: React.FC<{
   text: string;
   handleSortByValue: Function;
-}> = ({ text, handleSortByValue }) => {
+  filterName: string;
+  currentSelectedFilter: string | null;
+}> = ({ text, handleSortByValue, filterName, currentSelectedFilter }) => {
   const [sortByValue, setSortByValue]: [
     sortByValue: null | string,
     setSortByValue: Function
@@ -12,6 +14,10 @@ const SortByValueButton: React.FC<{
   useEffect(() => {
     if (sortByValue) handleSortByValue(sortByValue);
   }, [sortByValue]);
+
+  useEffect(() => {
+    if (filterName !== currentSelectedFilter) setSortByValue(null);
+  }, [currentSelectedFilter]);
 
   return (
     <span
