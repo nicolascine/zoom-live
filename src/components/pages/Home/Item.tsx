@@ -27,12 +27,18 @@ const Item: React.FC<Session> = (props) => {
             }
             <div className="caption">
               <span>
-                {props.description
-                  ? truncateText(
-                      props.description,
-                      config.MAX_LENGTH_ITEM_DESCRIPTION
-                    )
-                  : props.name}
+                {props.description ? (
+                  truncateText(
+                    props.description,
+                    config.MAX_LENGTH_ITEM_DESCRIPTION
+                  )
+                ) : (
+                  <>
+                    {props.name}
+                    <br />
+                    Category: {props.tags}
+                  </>
+                )}
               </span>
             </div>
           </div>
