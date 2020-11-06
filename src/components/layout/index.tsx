@@ -3,11 +3,13 @@ import { Header } from './Header';
 import { Main } from './Main';
 import { Footer } from './Footer';
 
-export const Layout: React.FC<any> = (props) => {
+export const Layout: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   return (
     <>
       <Header></Header>
-      <Main>{props.children}</Main>
+      <Main>{children}</Main>
       <Footer></Footer>
     </>
   );
