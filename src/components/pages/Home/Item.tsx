@@ -12,7 +12,7 @@ import { Session } from '../../../store/sessions/types';
 const Item: React.FC<Session> = (props) => {
   return (
     <div className="col-md-4">
-      <div className="card mb-4 shadow-sm" style={{ borderRadius: '10px' }}>
+      <div className="mb-4" style={{ borderRadius: '10px' }}>
         <Link to={`/session/${props.id}`}>
           <div className="overlay-effect">
             {
@@ -37,8 +37,10 @@ const Item: React.FC<Session> = (props) => {
             </div>
           </div>
         </Link>
-        <div className="card-body">
-          <p className="card-text">{props.name}</p>
+        <div>
+          <p className="card-text" style={{ marginBottom: '0px' }}>
+            {props.name}
+          </p>
           <div className="d-flex justify-content-between align-items-center">
             <small style={{ color: '#aaa' }}>
               <svg
